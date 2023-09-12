@@ -1,0 +1,42 @@
+<%- include("partials/header.ejs") %>;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">
+            <%= day %> 
+            </h1>
+
+        
+        <form action="/" method="POST" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="task" class="form-control" placeholder="Enter a task">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </div>
+            </div>
+        </form>
+
+        <ul class = "task-list">
+            <% for(i = 0; i < tasks.length; i++) { %>
+                <li>
+                    <%= tasks[i] %>;
+                    <form action="/delete" method="POST">
+                        <input type="hidden" name="task" value="<%= tasks %>"> 
+                        <br>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </li>
+<% } %>
+        </ul>
+                
+
+        </ul>
+    
+        <%- include("partials/footer.ejs") %>
